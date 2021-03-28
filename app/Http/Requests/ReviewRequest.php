@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ReviewRequest extends FormRequest
@@ -54,7 +53,14 @@ class ReviewRequest extends FormRequest
     public function messages(): array
     {
         return [
-            //
+            'name.required' => 'Поле "Имя" обязательно к заполеннию!',
+            'name.max' => 'Поле "Имя" не должно быть более 255 символов!',
+            'description.required' => 'Поле "Отзыв" обязательно к заполеннию!',
+            'description.max' => 'Поле "Отзыв" не должно быть более 255 символов!',
+            'instagram.required' => 'Поле "Instagram" обязательно к заполеннию!',
+            'image.required' => 'Поле "Фото" обязательно к заполеннию!',
+            'instagram.max' => 'Поле "Instagram" не должно быть более 255 символов!',
+            'sort.required' => 'Поле "Сортировка" обязательно к заполеннию!',
         ];
     }
 }

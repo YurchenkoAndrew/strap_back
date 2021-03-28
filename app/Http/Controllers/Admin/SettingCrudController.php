@@ -17,6 +17,7 @@ class SettingCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+
 //    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
@@ -29,7 +30,7 @@ class SettingCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Setting::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/setting');
-        CRUD::setEntityNameStrings('setting', 'settings');
+        CRUD::setEntityNameStrings('запись', 'Конфигурация');
     }
 
     /**
@@ -76,10 +77,8 @@ class SettingCrudController extends CrudController
             CRUD::addField(
                 [
                     'name' => 'logo',
-                    'type' => 'upload',
+                    'type' => 'image',
                     'label' => 'Логотип.',
-                    'upload' => true,
-                    'disk' => 'public'
                 ]
             ); // field
             CRUD::addField(['name' => 'name', 'type' => 'text', 'label' => 'Название.']); // field
@@ -109,10 +108,8 @@ class SettingCrudController extends CrudController
         CRUD::addField(
             [
                 'name' => 'logo',
-                'type' => 'upload',
+                'type' => 'image',
                 'label' => 'Логотип.',
-                'upload' => true,
-                'disk' => 'public'
             ]
         ); // field
         CRUD::addField(['name' => 'name', 'type' => 'text', 'label' => 'Название.']); // field

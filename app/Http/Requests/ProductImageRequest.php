@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProductImageRequest extends FormRequest
@@ -53,7 +52,11 @@ class ProductImageRequest extends FormRequest
     public function messages(): array
     {
         return [
-            //
+            'product_id.required' => 'Поле "Продукт" обязательно к заполеннию!',
+            'name.required' => 'Поле "Название изображения" обязательно к заполеннию!',
+            'name.max' => 'Поле "Название изображения" не должно быть более 255 символов!',
+            'image.required' => 'Поле "Изображение" обязательно к заполеннию!',
+            'sort.required' => 'Поле "Сортировка" обязательно к заполеннию!',
         ];
     }
 }

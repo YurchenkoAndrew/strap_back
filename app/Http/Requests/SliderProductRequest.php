@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SliderProductRequest extends FormRequest
@@ -52,7 +51,10 @@ class SliderProductRequest extends FormRequest
     public function messages(): array
     {
         return [
-            //
+            'name.required' => 'Поле обязательно к заполеннию!',
+            'name.max' => 'Поле не должно быть более 255 символов!',
+            'image.required' => 'Поле обязательно к заполеннию!',
+            'sort.required' => 'Поле обязательно к заполеннию!',
         ];
     }
 }

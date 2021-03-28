@@ -58,7 +58,7 @@ class Setting extends Model
 
     public function setLogoAttribute($value)
     {
-        $pathToImage = '/images/logo/';
+        $pathToImage = '/images/logo';
         $attributeName = 'logo';
         $width = 96;
         $height = 54;
@@ -83,8 +83,6 @@ class Setting extends Model
             Storage::disk('public')->put($pathToImage . $fileName, $image->stream());
             Storage::disk('public')->delete($this->{$attributeName});
             $this->attributes[$attributeName] = $pathToImage . $fileName;
-        } else {
-            $this.$this->uploadFileToDisk($value, $attributeName, 'public', $pathToImage);
         }
     }
 

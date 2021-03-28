@@ -81,10 +81,8 @@ class OurAdvantageCrudController extends CrudController
         CRUD::addField(['name' => 'sort', 'type' => 'number', 'label' => 'Сортировка.', 'default' => $countItems]); // fields
         CRUD::addField(
             ['name' => 'image',
-                'type' => 'upload',
+                'type' => 'image',
                 'label' => 'Изображение.',
-                'upload' => true,
-                'disk' => 'public'
             ]
         ); // fields
 

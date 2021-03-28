@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class InfoRequest extends FormRequest
@@ -26,7 +25,7 @@ class InfoRequest extends FormRequest
     public function rules(): array
     {
         return [
-             'info' => 'required|min:5|max:255'
+             'info' => 'required|max:255'
         ];
     }
 
@@ -50,7 +49,8 @@ class InfoRequest extends FormRequest
     public function messages(): array
     {
         return [
-            //
+            'info.required' => 'Поле "Информация" обязательно к заполеннию!',
+            'info.max' => 'Поле "Информация" не должно быть более 255 символов!',
         ];
     }
 }

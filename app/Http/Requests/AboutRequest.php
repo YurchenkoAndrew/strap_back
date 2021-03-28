@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AboutRequest extends FormRequest
@@ -56,7 +55,13 @@ class AboutRequest extends FormRequest
     public function messages(): array
     {
         return [
-            //
+            'text_one.required' => 'Поле "Текст 1" обязательно к заполеннию!',
+            'image_one.required' => 'Поле "Изображение 1" обязательно к заполеннию!',
+            'text_two.required' => 'Поле "Текст 2" обязательно к заполеннию!',
+            'image_two.required' => 'Поле "Изображение 2" обязательно к заполеннию!',
+            'text_third.required' => 'Поле "Текст 3" обязательно к заполеннию!',
+            'image_third.required' => 'Поле "Изображение 3" обязательно к заполеннию!',
+            'image_four.required' => 'Поле "Изображение 4" обязательно к заполеннию!',
         ];
     }
 }

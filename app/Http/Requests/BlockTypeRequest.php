@@ -26,7 +26,7 @@ class BlockTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-             'name' => 'required|min:5|max:255'
+             'name' => 'required|max:255'
         ];
     }
 
@@ -50,7 +50,8 @@ class BlockTypeRequest extends FormRequest
     public function messages(): array
     {
         return [
-            //
+            'name.required' => 'Поле "Наименование" обязательно к заполеннию!',
+            'name.max' => 'Поле "Наименование" не должно быть более 40 символов!',
         ];
     }
 }

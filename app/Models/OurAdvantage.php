@@ -58,7 +58,7 @@ class OurAdvantage extends Model
 
     public function setImageAttribute($value)
     {
-        $pathToImage = '/images/our-advantages/';
+        $pathToImage = '/images/our-advantages';
         // если изображение было стёрто
         if ($value == null) {
 //            удаляем изображение с диска
@@ -75,8 +75,6 @@ class OurAdvantage extends Model
             Storage::disk('public')->put($pathToImage . $fileName, $image->stream());
             Storage::disk('public')->delete($this->{'image'});
             $this->attributes['image'] = $pathToImage . $fileName;
-        } else {
-            $this.$this->uploadFileToDisk($value, 'image', 'public', $pathToImage);
         }
     }
 

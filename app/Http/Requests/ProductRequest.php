@@ -54,7 +54,13 @@ class ProductRequest extends FormRequest
     public function messages(): array
     {
         return [
-            //
+            'block_type_id.required' => 'Поле "Тип блока" обязательно к заполеннию!',
+            'name.required' => 'Поле "Наименование" обязательно к заполеннию!',
+            'name.max' => 'Поле "Наименование" не должно быть более 255 символов!',
+            'description.required' => 'Поле "Описание" обязательно к заполеннию!',
+            'price.required' => 'Поле "Цена" обязательно к заполеннию!',
+            'price.max' => 'Поле "Цена" не должно быть более 20 символов!',
+            'sort.required' => 'Поле "Сортировка" обязательно к заполеннию!',
         ];
     }
 }

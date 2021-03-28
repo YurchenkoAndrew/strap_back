@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OurAdvantageRequest extends FormRequest
@@ -26,10 +25,10 @@ class OurAdvantageRequest extends FormRequest
     public function rules(): array
     {
         return [
-             'name' => 'required|max:255',
-             'description' => 'required|max:255',
-             'sort' => 'required',
-             'image' => 'required',
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+            'sort' => 'required',
+            'image' => 'required',
         ];
     }
 
@@ -53,7 +52,12 @@ class OurAdvantageRequest extends FormRequest
     public function messages(): array
     {
         return [
-            //
+            'name.required' => 'Поле "Заголовок" обязательно к заполеннию!',
+            'name.max' => 'Поле "Заголовок" не должно быть более 255 символов!',
+            'description.required' => 'Поле "Описание" обязательно к заполеннию!',
+            'description.max' => 'Поле "Описание" не должно быть более 255 символов!',
+            'image.required' => 'Поле "Изображение" обязательно к заполеннию!',
+            'sort.required' => 'Поле "Сортировка" обязательно к заполеннию!',
         ];
     }
 }

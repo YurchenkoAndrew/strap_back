@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DeliveryRequest extends FormRequest
@@ -51,7 +50,8 @@ class DeliveryRequest extends FormRequest
     public function messages(): array
     {
         return [
-            //
+            'image.required' => 'Поле "Изображение" обязательно к заполеннию!',
+            'text.required' => 'Поле "Текст" обязательно к заполеннию!',
         ];
     }
 }
