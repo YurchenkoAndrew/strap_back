@@ -35,9 +35,9 @@ class Product extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function images(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function images(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->belongsToMany(ProductImage::class);
+        return $this->hasMany(ProductImage::class);
     }
     public function blockType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

@@ -90,6 +90,7 @@ class DeliveryCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        CRUD::addField(['name' => 'image', 'type' => 'image', 'label' => 'Изображение.']); // columns
+        CRUD::addField(['name' => 'text', 'type' => 'ckeditor', 'label' => 'Текст.']); // columns
     }
 }
