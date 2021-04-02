@@ -67,9 +67,17 @@ class ProductImageCrudController extends CrudController
 
         CRUD::addColumn(
             [
-                'name' => 'image',
+                'name' => 'image_horizontal',
                 'type' => 'image',
-                'label' => 'Изображение',
+                'label' => 'Изображение горизонтальное',
+            ]
+        ); // columns
+
+        CRUD::addColumn(
+            [
+                'name' => 'image_vertical',
+                'type' => 'image',
+                'label' => 'Изображение вертикальное',
             ]
         ); // columns
 
@@ -131,9 +139,17 @@ class ProductImageCrudController extends CrudController
 
         CRUD::addField(
             [
-                'name' => 'image',
+                'name' => 'image_horizontal',
                 'type' => 'image',
-                'label' => 'Изображение',
+                'label' => 'Изображение горизонтальное',
+            ]
+        );
+
+        CRUD::addField(
+            [
+                'name' => 'image_vertical',
+                'type' => 'image',
+                'label' => 'Изображение вертикальное',
             ]
         );
 

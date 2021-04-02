@@ -27,7 +27,6 @@ class ProductImageRequest extends FormRequest
         return [
             'product_id' => 'required',
             'name' => 'required|max:255',
-            'image' => 'required',
             'sort' => 'required',
         ];
     }
@@ -55,7 +54,6 @@ class ProductImageRequest extends FormRequest
             'product_id.required' => 'Поле "Продукт" обязательно к заполеннию!',
             'name.required' => 'Поле "Название изображения" обязательно к заполеннию!',
             'name.max' => 'Поле "Название изображения" не должно быть более 255 символов!',
-            'image.required' => 'Поле "Изображение" обязательно к заполеннию!',
             'sort.required' => 'Поле "Сортировка" обязательно к заполеннию!',
         ];
     }

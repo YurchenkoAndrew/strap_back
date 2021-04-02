@@ -22,7 +22,7 @@ class ProductImage extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    protected $fillable = ['product_id', 'name', 'image', 'sort'];
+    protected $fillable = ['product_id', 'name', 'image_horizontal', 'image_vertical', 'sort'];
     // protected $hidden = [];
     // protected $dates = [];
     protected $type = '';
@@ -62,25 +62,47 @@ class ProductImage extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function setImageAttribute($value)
+    public function setImageHorizontalAttribute($value)
     {
-        $pathToImage = '/images/products/';
+        $pathToImage1 = '/images/products/horizontal/';
         // если изображение было стёрто
         if ($value == null) {
 //            удаляем изображение с диска
-            Storage::disk('public')->delete($this->{'image'});
+            Storage::disk('public')->delete($this->{'image_horizontal'});
 //            устанавливаем null в базе данных
-            $this->attributes['image'] = null;
+            $this->attributes['image_horizontal'] = null;
         }
 //        если пришло изображение как base64, сохраняем его для DB
         if (Str::startsWith($value, 'data:image')) {
             $image = Image::make($value)->encode('jpeg');
             // resize image to fixed size
-            $image->resize(720, 666);
+            $image->resize(1280, 960);
             $fileName = md5($value . time()) . '.jpeg';
-            Storage::disk('public')->put($pathToImage . $fileName, $image->stream());
-            Storage::disk('public')->delete($this->{'image'});
-            $this->attributes['image'] = $pathToImage . $fileName;
+            Storage::disk('public')->put($pathToImage1 . $fileName, $image->stream());
+            Storage::disk('public')->delete($this->{'image_horizontal'});
+            $this->attributes['image_horizontal'] = $pathToImage1 . $fileName;
+        }
+    }
+
+    public function setImageVerticalAttribute($value)
+    {
+        $pathToImage1 = '/images/products/vertical/';
+        // если изображение было стёрто
+        if ($value == null) {
+//            удаляем изображение с диска
+            Storage::disk('public')->delete($this->{'image_vertical'});
+//            устанавливаем null в базе данных
+            $this->attributes['image_vertical'] = null;
+        }
+//        если пришло изображение как base64, сохраняем его для DB
+        if (Str::startsWith($value, 'data:image')) {
+            $image = Image::make($value)->encode('jpeg');
+            // resize image to fixed size
+            $image->resize(960, 1280);
+            $fileName = md5($value . time()) . '.jpeg';
+            Storage::disk('public')->put($pathToImage1 . $fileName, $image->stream());
+            Storage::disk('public')->delete($this->{'image_vertical'});
+            $this->attributes['image_vertical'] = $pathToImage1 . $fileName;
         }
     }
 

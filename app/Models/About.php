@@ -60,8 +60,8 @@ class About extends Model
     {
         $pathToImage = '/images/about/';
         $attributeName = 'image_one';
-        $width = 555;
-        $height = 530;
+        $width = 960;
+        $height = 1280;
         $this->workToImage($value, $pathToImage, $attributeName, $width, $height);
     }
 
@@ -69,8 +69,8 @@ class About extends Model
     {
         $pathToImage = '/images/about/';
         $attributeName = 'image_two';
-        $width = 450;
-        $height = 580;
+        $width = 960;
+        $height = 1280;
         $this->workToImage($value, $pathToImage, $attributeName, $width, $height);
     }
 
@@ -78,8 +78,8 @@ class About extends Model
     {
         $pathToImage = '/images/about/';
         $attributeName = 'image_third';
-        $width = 338;
-        $height = 387;
+        $width = 960;
+        $height = 960;
         $this->workToImage($value, $pathToImage, $attributeName, $width, $height);
     }
 
@@ -87,8 +87,8 @@ class About extends Model
     {
         $pathToImage = '/images/about/';
         $attributeName = 'image_four';
-        $width = 338;
-        $height = 387;
+        $width = 960;
+        $height = 960;
         $this->workToImage($value, $pathToImage, $attributeName, $width, $height);
     }
 

@@ -115,7 +115,7 @@ class SettingCrudController extends CrudController
         CRUD::addField(['name' => 'name', 'type' => 'text', 'label' => 'Название.']); // field
         CRUD::addField(['name' => 'address', 'type' => 'text', 'label' => 'Адрес.']); // field
         CRUD::addField(['name' => 'phone', 'type' => 'text', 'label' => 'Телефон.']); // field
-        CRUD::addField(['name' => 'whatsapp', 'type' => 'url', 'label' => 'Whatsapp.']); // field
+        CRUD::addField(['name' => 'whatsapp', 'type' => 'number', 'label' => 'Whatsapp. (77051234567)']); // field
         CRUD::addField(['name' => 'instagram', 'type' => 'url', 'label' => 'Instagram.']); // field
     }
 }

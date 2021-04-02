@@ -17,7 +17,8 @@ class CreateProductImagesTable extends Migration
             $table->id();
             $table->foreignId('product_id');
             $table->string('name');
-            $table->string('image');
+            $table->string('image_horizontal')->nullable();
+            $table->string('image_vertical')->nullable();
             $table->unsignedBigInteger('sort');
             $table->timestamps();
         });

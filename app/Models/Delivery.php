@@ -58,7 +58,7 @@ class Delivery extends Model
 
     public function setImageAttribute($value)
     {
-        $pathToImage = '/images/slider-products/';
+        $pathToImage = '/images/delivery/';
         // если изображение было стёрто
         if ($value == null) {
 //            удаляем изображение с диска
@@ -70,7 +70,7 @@ class Delivery extends Model
         if (Str::startsWith($value, 'data:image')) {
             $image = Image::make($value)->encode('jpeg');
             // resize image to fixed size
-            $image->resize(680, 550);
+            $image->resize(960, 1280);
             $fileName = md5($value . time()) . '.jpeg';
             Storage::disk('public')->put($pathToImage . $fileName, $image->stream());
             Storage::disk('public')->delete($this->{'image'});

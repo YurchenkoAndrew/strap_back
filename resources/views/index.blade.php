@@ -213,9 +213,10 @@
 
 
     <div id="vid"></div>
+
     @foreach($products as $product)
         {{--white full--}}
-        <?php $i = 0?>
+        <?php $i = $loop->index?>
         @if($i === 0)
             <section id="m_one_sec">
                 <div class="container-fluid">
@@ -229,15 +230,21 @@
                                     @foreach($product['images'] as $image)
 
                                         @if ($loop->first)
-                                    <div class="carousel-item active">
+                                            <div class="carousel-item active">
+
+                                                <div class="one_image"
+                                                     style="background: url('{{$image['image']}}') no-repeat; background-size: 100%;"></div>
+
+                                            </div>
+
                                         @else
                                             <div class="carousel-item">
-                                                @endif
+                                                <div class="one_image"
+                                                     style="background: url('{{$image['image']}}') no-repeat; background-size: 100%;"></div>
 
-                                        <div class="one_image"
-                                             style="background: url('{{$image['image']}}') no-repeat; background-size: 100%;"></div>
+                                            </div>
+                                        @endif
 
-                                    </div>
                                     @endforeach
 
                                 </div>
@@ -249,21 +256,8 @@
                         <div class="col-xl-6 col-lg-6 col-md-12 bg_lines">
                             <div class="row">
                                 <div class="col-lg-10 col-md-12 pt_one_sec pl_one_sec_min">
-                                    <h3 class="text-left title_blocks  mt-3"></h3>
-                                    <div align="left" class="text_blocks mt-3"><span
-                                            class="text_blocks_bold">Верх ремешка:</span> французская козья кожа Sully
-                                        от Alran
-                                    </div>
-
-                                    <div align="left" class="text_blocks  mt-3"><span
-                                            class="text_blocks_bold">Подклад:</span>
-                                        французcкая телячья кожа Zermatt от HASS с водоотталкивающим и гипоаллергенным
-                                        свойством.
-                                    </div>
-
-                                    <div align="left" class="text_blocks mt-3">Прошито вручную седельным швом вощеными
-                                        льняными
-                                        нитками.
+                                    <h3 class="text-left title_blocks  mt-3">{{$product['name']}}</h3>
+                                    <div align="left" class="text_blocks mt-3">{!! $product['description']!!}
                                     </div>
 
 
@@ -272,7 +266,7 @@
                                                 href="https://api.whatsapp.com/send/?phone=77760001616&text&app_absent=0"
                                                 target="_blank" class="btn btn-md btn_black">Заказать</a></div>
                                         <div class="col-lg-5 col-6">
-                                            <p class="price_slide_blocks mt-1">24 000 ₸ </p>
+                                            <p class="price_slide_blocks mt-1">{{$product['price']}} ₸ </p>
 
                                         </div>
                                     </div>
@@ -287,11 +281,6 @@
                                                 <div><a class="post_control_right" href="#one_blocks" role="button"
                                                         data-slide="next"><img src="/img/arr_blocks_r.svg"></a></div>
                                             </div>
-                                            <!--
-                                                                                    <div class="col-10">
-                                                                                        <img src="img/01.png" width="100px" class="d-none d-xl-block">
-                                                                                    </div>
-                                            -->
                                         </div>
                                     </div>
 
@@ -309,29 +298,37 @@
         @endif
         {{--white full--}}
         {{--    section two blocks--}}
-        @if($i % 2 == 0 || $i % 3 == 0)
+        @if($i == 2 || $i < 4)
             <section id="m_two_sec">
                 <div class="container-fluid">
                     <div class="row" align="center">
                         {{--block white small--}}
-                        @if($i % 2 == 0)
+                        @if($i === 2 || $i < 3)
                             <div class="col-xl-3 col-lg-6 col-md-12">
 
                                 <!-- slider -->
                                 <div id="two_blocks" class="carousel slide" data-ride="carousel" data-interval="false">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
+                                        @foreach($product['images'] as $image)
 
-                                            <div class="two_image"
-                                                 style="background: url('/img/02_m.jpg') no-repeat; background-size: 100%;"></div>
+                                            @if ($loop->first)
+                                                <div class="carousel-item active">
 
-                                        </div>
-                                        <div class="carousel-item">
+                                                    <div class="one_image"
+                                                         style="background: url('{{$image['image']}}') no-repeat; background-size: 100%;"></div>
 
-                                            <div class="two_image"
-                                                 style="background: url('/img/02_m.jpg') no-repeat; background-size: 100%;"></div>
+                                                </div>
 
-                                        </div>
+                                            @else
+                                                <div class="carousel-item">
+                                                    <div class="one_image"
+                                                         style="background: url('{{$image['image']}}') no-repeat; background-size: 100%;"></div>
+
+                                                </div>
+                                            @endif
+
+                                        @endforeach
+
                                     </div>
                                 </div>
                                 <!-- slider -->
@@ -341,25 +338,9 @@
                             <div class="col-xl-3 col-lg-6 col-md-12 bg_lines_two">
                                 <div class="row">
                                     <div class="col-lg-11 col-md-12 pt_one_sec pl_one_sec_min">
-                                        <h3 class="text-left title_blocks  mt-3">Ремешки из кожи козы</h3>
-                                        <div align="left" class="text_blocks mt-3"><span
-                                                class="text_blocks_bold">Верх ремешка:</span> французская козья кожа
-                                            Sully
-                                            от
-                                            Alran
-                                        </div>
-
-                                        <div align="left" class="text_blocks  mt-3"><span
-                                                class="text_blocks_bold">Подклад:</span>
-                                            французcкая телячья кожа Zermatt от HASS с водоотталкивающим и
-                                            гипоаллергенным
-                                            свойством.
-                                        </div>
-
-                                        <div align="left" class="text_blocks mt-3">Прошито вручную седельным швом
-                                            вощеными
-                                            льняными
-                                            нитками.
+                                        <h3 class="text-left title_blocks  mt-3">{{$product['name']}}</h3>
+                                        <div align="left" class="text_blocks mt-3">
+                                            <p>{!!$product['description']!!}</p>
                                         </div>
 
 
@@ -368,7 +349,7 @@
                                                     href="https://api.whatsapp.com/send/?phone=77760001616&text&app_absent=0"
                                                     target="_blank" class="btn btn-md btn_black">Заказать</a></div>
                                             <div class="col-lg-5 col-6">
-                                                <p class="price_slide_blocks mt-1">24 000 ₸ </p>
+                                                <p class="price_slide_blocks mt-1">{{$product['price']}} ₸ </p>
 
                                             </div>
                                         </div>
@@ -376,12 +357,14 @@
                                         <div class="d-none d-xl-block">
                                             <div class="row">
                                                 <div class="col-1">
-                                                    <div><a class="post_control_left" href="#two_blocks" role="button"
+                                                    <div><a class="post_control_left" href="#two_blocks"
+                                                            role="button"
                                                             data-slide="prev"><img src="/img/arr_blocks_l.svg"></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-1">
-                                                    <div><a class="post_control_right" href="#two_blocks" role="button"
+                                                    <div><a class="post_control_right" href="#two_blocks"
+                                                            role="button"
                                                             data-slide="next"><img src="/img/arr_blocks_r.svg"></a>
                                                     </div>
                                                 </div>
@@ -394,7 +377,7 @@
                             </div>
                             {{--block white small--}}
                         @endif
-                        @if($i % 3 == 0)
+                        @if($i === 3)
                             {{--block black small--}}
                             <div class="col-xl-3 col-lg-6 ">
 
@@ -402,75 +385,83 @@
                                 <div id="three_blocks" class="carousel slide" data-ride="carousel"
                                      data-interval="false">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
 
-                                            <div class="two_image"
-                                                 style="background: url('/img/03_m.jpg') no-repeat; background-size: 100%;"></div>
+                                        @foreach($product['images'] as $image)
+                                            @if ($loop->first)
+                                                <div class="carousel-item active">
+                                                    @else
+                                                        <div class="carousel-item">
+                                                            @endif
 
-                                        </div>
-                                        <div class="carousel-item">
+                                                            <div class="two_image"
+                                                                 style="background: url('{{$image['image']}}') no-repeat; background-size: 100%;"></div>
 
-                                            <div class="two_image"
-                                                 style="background: url('/img/03_m.jpg') no-repeat; background-size: 100%;"></div>
-
-                                        </div>
+                                                        </div>
+                                                        @endforeach
+                                                </div>
                                     </div>
+                                    <!-- slider -->
+
                                 </div>
-                                <!-- slider -->
+                                <div class="col-xl-3 col-lg-6 bg_lines_b">
+                                    <div class="row">
+                                        <div class="col-lg-11 pt_one_sec pl_one_sec_min">
+                                            <h3 class="text-left title_blocks white">Ремешки из кожи акулы</h3>
+                                            <div align="left" class="text_blocks white mt-3"><span
+                                                    class="text_blocks_bold">Верх ремешка:</span>
+                                                кожа акулы
+                                            </div>
 
-                            </div>
-                            <div class="col-xl-3 col-lg-6 bg_lines_b">
-                                <div class="row">
-                                    <div class="col-lg-11 pt_one_sec pl_one_sec_min">
-                                        <h3 class="text-left title_blocks white">Ремешки из кожи акулы</h3>
-                                        <div align="left" class="text_blocks white mt-3"><span class="text_blocks_bold">Верх ремешка:</span>
-                                            кожа акулы
-                                        </div>
+                                            <div align="left" class="text_blocks white mt-3"><span
+                                                    class="text_blocks_bold">Подклад:</span> французcкая телячья
+                                                кожа
+                                                Zermatt от
+                                                HASS с
+                                                водоотталкивающим и гипоаллергенным свойством.
+                                            </div>
 
-                                        <div align="left" class="text_blocks white mt-3"><span
-                                                class="text_blocks_bold">Подклад:</span> французcкая телячья кожа
-                                            Zermatt от
-                                            HASS с
-                                            водоотталкивающим и гипоаллергенным свойством.
-                                        </div>
+                                            <div align="left" class="text_blocks white mt-3">Прошито вручную
+                                                седельным швом
+                                                вощеными
+                                                льняными нитками.
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col-lg-4 col-6"><a
+                                                        href="https://api.whatsapp.com/send/?phone=77760001616&text&app_absent=0"
+                                                        target="_blank"
+                                                        class="btn btn-md btn_white">Заказать</a></div>
+                                                <div class="col-lg-6 col-6">
+                                                    <p class="price_slide mt-1">24 000 ₸ </p>
 
-                                        <div align="left" class="text_blocks white mt-3">Прошито вручную седельным швом
-                                            вощеными
-                                            льняными нитками.
-                                        </div>
-                                        <div class="row mt-4">
-                                            <div class="col-lg-4 col-6"><a
-                                                    href="https://api.whatsapp.com/send/?phone=77760001616&text&app_absent=0"
-                                                    target="_blank" class="btn btn-md btn_white">Заказать</a></div>
-                                            <div class="col-lg-6 col-6">
-                                                <p class="price_slide mt-1">24 000 ₸ </p>
+                                                </div>
+                                            </div>
 
+                                            <div class="d-none d-xl-block">
+                                                <div class="row">
+                                                    <div class="col-1">
+                                                        <div><a class="post_control_left" href="#three_blocks"
+                                                                role="button"
+                                                                data-slide="prev"><img
+                                                                    src="/img/arr_blocks_lw.svg"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <div><a class="post_control_right" href="#three_blocks"
+                                                                role="button"
+                                                                data-slide="next"><img
+                                                                    src="/img/arr_blocks_rw.svg"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="d-none d-xl-block">
-                                            <div class="row">
-                                                <div class="col-1">
-                                                    <div><a class="post_control_left" href="#three_blocks" role="button"
-                                                            data-slide="prev"><img src="/img/arr_blocks_lw.svg"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-1">
-                                                    <div><a class="post_control_right" href="#three_blocks"
-                                                            role="button"
-                                                            data-slide="next"><img src="/img/arr_blocks_rw.svg"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-
                                 </div>
+                                {{--block black small--}}
+                                @endif
                             </div>
-                            {{--block black small--}}
-                        @endif
                     </div>
-                </div>
             </section>
         @endif
         {{--    section two blocks--}}
@@ -557,7 +548,6 @@
         {{--black block full--}}
         <?php $i++ ?>
         @if($i === 4)
-            <?php $i = 0 ?>
         @endif
     @endforeach
 

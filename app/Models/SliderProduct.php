@@ -70,7 +70,7 @@ class SliderProduct extends Model
         if (Str::startsWith($value, 'data:image')) {
             $image = Image::make($value)->encode('jpeg');
             // resize image to fixed size
-            $image->resize(328, 411);
+            $image->resize(1280, 960);
             $fileName = md5($value . time()) . '.jpeg';
             Storage::disk('public')->put($pathToImage . $fileName, $image->stream());
             Storage::disk('public')->delete($this->{'image'});
