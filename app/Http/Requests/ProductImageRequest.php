@@ -28,6 +28,8 @@ class ProductImageRequest extends FormRequest
             'product_id' => 'required',
             'name' => 'required|max:255',
             'sort' => 'required',
+            'image_horizontal' => 'required',
+            'image_vertical' => 'required',
         ];
     }
 
@@ -55,6 +57,8 @@ class ProductImageRequest extends FormRequest
             'name.required' => 'Поле "Название изображения" обязательно к заполеннию!',
             'name.max' => 'Поле "Название изображения" не должно быть более 255 символов!',
             'sort.required' => 'Поле "Сортировка" обязательно к заполеннию!',
+            'image_horizontal.required' => 'Поле "Горизонтальное изображение" обязательно к заполеннию!',
+            'image_vertical.required' => 'Поле "Вертикальное изображение" обязательно к заполеннию!',
         ];
     }
 }
