@@ -5,20 +5,26 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\OurAdvantageRequest;
 use App\Models\OurAdvantage;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanel;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
  * Class OurAdvantageCrudController
  * @package App\Http\Controllers\Admin
- * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
+ * @property-read CrudPanel $crud
  */
 class OurAdvantageCrudController extends CrudController
 {
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use ListOperation;
+    use CreateOperation;
+    use UpdateOperation;
+    use DeleteOperation;
+    use ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -43,7 +49,6 @@ class OurAdvantageCrudController extends CrudController
         CRUD::addColumn(['name' => 'sort', 'type' => 'number', 'label' => 'Сортировка.']); // columns
         CRUD::addColumn(['name' => 'image', 'type' => 'image', 'label' => 'Изображение.']); // columns
         CRUD::addColumn(['name' => 'name', 'label' => 'Заголовок.']); // columns
-//        CRUD::addColumn(['name' => 'description', 'label' => 'Описание.']); // columns
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -82,7 +87,7 @@ class OurAdvantageCrudController extends CrudController
         CRUD::addField(
             ['name' => 'image',
                 'type' => 'image',
-                'label' => 'Изображение.',
+                'label' => 'Изображение. (44x44)',
             ]
         ); // fields
 

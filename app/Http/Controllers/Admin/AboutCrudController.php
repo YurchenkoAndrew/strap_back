@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AboutRequest;
+use App\Models\About;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
@@ -22,7 +22,8 @@ class AboutCrudController extends CrudController
     use ListOperation;
     use CreateOperation;
     use UpdateOperation;
-    use DeleteOperation;
+
+//    use DeleteOperation;
     use ShowOperation;
 
     /**
@@ -45,6 +46,9 @@ class AboutCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        if (About::count() > 0) {
+            $this->crud->denyAccess((array)'create');
+        }
 //        CRUD::addColumn(['name' => 'text_one', 'label' => 'Текст первый']); // columns
         CRUD::addColumn(['name' => 'image_one', 'type' => 'image', 'label' => 'Изображение первое']); // columns
 //        CRUD::addColumn(['name' => 'text_two', 'label' => 'Текст второй']); // columns
@@ -68,13 +72,13 @@ class AboutCrudController extends CrudController
      */
     protected function setupShowOperation()
     {
-        CRUD::addColumn(['name' => 'text_one', 'label' => 'Текст первый']); // columns
-        CRUD::addColumn(['name' => 'image_one', 'type' => 'image', 'label' => 'Изображение первое']); // columns
-        CRUD::addColumn(['name' => 'text_two', 'label' => 'Текст второй']); // columns
-        CRUD::addColumn(['name' => 'image_two', 'type' => 'image', 'label' => 'Изображение второе']); // columns
-        CRUD::addColumn(['name' => 'text_third', 'label' => 'Текст третий']); // columns
-        CRUD::addColumn(['name' => 'image_third', 'type' => 'image', 'label' => 'Изображение третье']); // columns
-        CRUD::addColumn(['name' => 'image_four', 'type' => 'image', 'label' => 'Изображение четвертое']); // columns
+        CRUD::addColumn(['name' => 'text_one', 'label' => 'Текст первый.']); // columns
+        CRUD::addColumn(['name' => 'image_one', 'type' => 'image', 'label' => 'Изображение первое.']); // columns
+        CRUD::addColumn(['name' => 'text_two', 'label' => 'Текст второй.']); // columns
+        CRUD::addColumn(['name' => 'image_two', 'type' => 'image', 'label' => 'Изображение второе.']); // columns
+        CRUD::addColumn(['name' => 'text_third', 'label' => 'Текст третий.']); // columns
+        CRUD::addColumn(['name' => 'image_third', 'type' => 'image', 'label' => 'Изображение третье.']); // columns
+        CRUD::addColumn(['name' => 'image_four', 'type' => 'image', 'label' => 'Изображение четвертое.']); // columns
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -91,15 +95,9 @@ class AboutCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(AboutRequest::class);
-
-        CRUD::addField(['name' => 'text_one', 'type' => 'ckeditor', 'label' => 'Текст первый']); // columns
-        CRUD::addField(['name' => 'image_one', 'type' => 'image', 'label' => 'Изображение первое']); // columns
-        CRUD::addField(['name' => 'text_two', 'type' => 'ckeditor', 'label' => 'Текст второй']); // columns
-        CRUD::addField(['name' => 'image_two', 'type' => 'image', 'label' => 'Изображение второе']); // columns
-        CRUD::addField(['name' => 'text_third', 'type' => 'ckeditor', 'label' => 'Текст третий']); // columns
-        CRUD::addField(['name' => 'image_third', 'type' => 'image', 'label' => 'Изображение третье']); // columns
-        CRUD::addField(['name' => 'image_four', 'type' => 'image', 'label' => 'Изображение четвертое']); // columns
+        if (About::count() === 0) {
+            $this->createUpdate();
+        }
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -116,6 +114,20 @@ class AboutCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        $this->createUpdate();
+    }
+
+    protected function createUpdate()
+    {
+        CRUD::setValidation(AboutRequest::class);
+
+        CRUD::addField(['name' => 'text_one', 'type' => 'ckeditor', 'label' => 'Текст первый.']); // columns
+        CRUD::addField(['name' => 'image_one', 'type' => 'image', 'label' => 'Изображение первое. (960x1280)']); // columns
+        CRUD::addField(['name' => 'text_two', 'type' => 'ckeditor', 'label' => 'Текст второй.']); // columns
+        CRUD::addField(['name' => 'image_two', 'type' => 'image', 'label' => 'Изображение второею (960x1280)']); // columns
+        CRUD::addField(['name' => 'text_third', 'type' => 'ckeditor', 'label' => 'Текст третий.']); // columns
+        CRUD::addField(['name' => 'image_third', 'type' => 'image', 'label' => 'Изображение третье. (1000x1000)']); // columns
+        CRUD::addField(['name' => 'image_four', 'type' => 'image', 'label' => 'Изображение четвертое. (1000x1000)']); // columns
+
     }
 }

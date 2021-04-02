@@ -72,20 +72,7 @@ class SettingCrudController extends CrudController
     protected function setupCreateOperation()
     {
         if (Setting::count() == 0) {
-            CRUD::setValidation(SettingRequest::class);
-
-            CRUD::addField(
-                [
-                    'name' => 'logo',
-                    'type' => 'image',
-                    'label' => 'Логотип.',
-                ]
-            ); // field
-            CRUD::addField(['name' => 'name', 'type' => 'text', 'label' => 'Название.']); // field
-            CRUD::addField(['name' => 'address', 'type' => 'text', 'label' => 'Адрес.']); // field
-            CRUD::addField(['name' => 'phone', 'type' => 'text', 'label' => 'Телефон.']); // field
-            CRUD::addField(['name' => 'whatsapp', 'type' => 'url', 'label' => 'Whatsapp.']); // field
-            CRUD::addField(['name' => 'instagram', 'type' => 'url', 'label' => 'Instagram.']); // field
+            $this->createUpdate();
         }
 
         /**
@@ -103,13 +90,18 @@ class SettingCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
+        $this->createUpdate();
+    }
+
+    protected function createUpdate()
+    {
         CRUD::setValidation(SettingRequest::class);
 
         CRUD::addField(
             [
                 'name' => 'logo',
                 'type' => 'image',
-                'label' => 'Логотип.',
+                'label' => 'Логотип. (100x56)',
             ]
         ); // field
         CRUD::addField(['name' => 'name', 'type' => 'text', 'label' => 'Название.']); // field

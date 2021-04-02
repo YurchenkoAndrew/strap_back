@@ -5,20 +5,26 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\ReviewRequest;
 use App\Models\Review;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanel;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
  * Class ReviewCrudController
  * @package App\Http\Controllers\Admin
- * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
+ * @property-read CrudPanel $crud
  */
 class ReviewCrudController extends CrudController
 {
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use ListOperation;
+    use CreateOperation;
+    use UpdateOperation;
+    use DeleteOperation;
+    use ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -42,9 +48,7 @@ class ReviewCrudController extends CrudController
     {
         CRUD::addColumn(['name' => 'sort', 'type' => 'number', 'label' => 'Сортировка.']); // columns
         CRUD::addColumn(['name' => 'name', 'type' => 'text', 'label' => 'Имя.']); // columns
-//        CRUD::addColumn(['name' => 'description', 'type' => 'ckeditor', 'label' => 'Отзыв.']); // columns
         CRUD::addColumn(['name' => 'image', 'type' => 'image', 'label' => 'Фото.']); // columns
-//        CRUD::addColumn(['name' => 'instagram', 'type' => 'text', 'label' => 'Instagram.']); // columns
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -88,7 +92,7 @@ class ReviewCrudController extends CrudController
         CRUD::addField(['name' => 'sort', 'type' => 'number', 'label' => 'Сортировка.', 'default' => $countItems]); // field
         CRUD::addField(['name' => 'name', 'type' => 'text', 'label' => 'Имя.']); // field
         CRUD::addField(['name' => 'description', 'type' => 'ckeditor', 'label' => 'Отзыв.']); // field
-        CRUD::addField(['name' => 'image', 'type' => 'image', 'label' => 'Фото.']); // columns
+        CRUD::addField(['name' => 'image', 'type' => 'image', 'label' => 'Фото. (300x300)']); // columns
         CRUD::addField(['name' => 'instagram', 'type' => 'url', 'label' => 'Instagram.']); // field
 
         /**

@@ -71,7 +71,7 @@ class DeliveryCrudController extends CrudController
         if (Delivery::count() == 0) {
             CRUD::setValidation(DeliveryRequest::class);
 
-            CRUD::addField(['name' => 'image', 'type' => 'image', 'label' => 'Изображение.']); // columns
+            CRUD::addField(['name' => 'image', 'type' => 'image', 'label' => 'Изображение. (960х1280)']); // columns
             CRUD::addField(['name' => 'text', 'type' => 'ckeditor', 'label' => 'Текст.']); // columns
         }
 
@@ -90,7 +90,7 @@ class DeliveryCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        CRUD::addField(['name' => 'image', 'type' => 'image', 'label' => 'Изображение.']); // columns
+        CRUD::addField(['name' => 'image', 'type' => 'image', 'label' => 'Изображение. (960х1280)']); // columns
         CRUD::addField(['name' => 'text', 'type' => 'ckeditor', 'label' => 'Текст.']); // columns
     }
 }

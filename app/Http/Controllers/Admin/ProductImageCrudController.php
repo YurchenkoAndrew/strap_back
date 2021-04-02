@@ -5,20 +5,26 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\ProductImageRequest;
 use App\Models\ProductImage;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanel;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
  * Class ProductImageCrudController
  * @package App\Http\Controllers\Admin
- * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
+ * @property-read CrudPanel $crud
  */
 class ProductImageCrudController extends CrudController
 {
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use ListOperation;
+    use CreateOperation;
+    use UpdateOperation;
+    use DeleteOperation;
+    use ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -45,7 +51,7 @@ class ProductImageCrudController extends CrudController
             [
                 'name' => 'sort',
                 'type' => 'number',
-                'label' => 'Сортировка',
+                'label' => 'Сортировка.',
             ]
         ); // columns
 
@@ -53,7 +59,7 @@ class ProductImageCrudController extends CrudController
             [
                 'name' => 'product',
                 'type' => 'relationship',
-                'label' => 'Продукт',
+                'label' => 'Продукт.',
             ]
         ); // columns
 
@@ -61,7 +67,7 @@ class ProductImageCrudController extends CrudController
             [
                 'name' => 'name',
                 'type' => 'text',
-                'label' => 'Название изображения',
+                'label' => 'Название изображения.',
             ]
         ); // columns
 
@@ -69,7 +75,7 @@ class ProductImageCrudController extends CrudController
             [
                 'name' => 'image_horizontal',
                 'type' => 'image',
-                'label' => 'Изображение горизонтальное',
+                'label' => 'Изображение горизонтальное.',
             ]
         ); // columns
 
@@ -77,7 +83,7 @@ class ProductImageCrudController extends CrudController
             [
                 'name' => 'image_vertical',
                 'type' => 'image',
-                'label' => 'Изображение вертикальное',
+                'label' => 'Изображение вертикальное.',
             ]
         ); // columns
 
@@ -85,7 +91,7 @@ class ProductImageCrudController extends CrudController
             [
                 'name' => 'sort',
                 'type' => 'number',
-                'label' => 'Сортировка',
+                'label' => 'Сортировка.',
             ]
         ); // columns
 
@@ -113,7 +119,7 @@ class ProductImageCrudController extends CrudController
             [
                 'name' => 'sort',
                 'type' => 'number',
-                'label' => 'Сортировка',
+                'label' => 'Сортировка.',
                 'default' => $countItems,
             ]
         );
@@ -133,7 +139,7 @@ class ProductImageCrudController extends CrudController
             [
                 'name' => 'name',
                 'type' => 'text',
-                'label' => 'Название изображения',
+                'label' => 'Название изображения.',
             ]
         ); // columns
 
@@ -141,7 +147,7 @@ class ProductImageCrudController extends CrudController
             [
                 'name' => 'image_horizontal',
                 'type' => 'image',
-                'label' => 'Изображение горизонтальное',
+                'label' => 'Изображение горизонтальное. (1280x960)',
             ]
         );
 
@@ -149,7 +155,7 @@ class ProductImageCrudController extends CrudController
             [
                 'name' => 'image_vertical',
                 'type' => 'image',
-                'label' => 'Изображение вертикальное',
+                'label' => 'Изображение вертикальное. (960x1280)',
             ]
         );
 
@@ -157,7 +163,7 @@ class ProductImageCrudController extends CrudController
             [
                 'name' => 'sort',
                 'type' => 'number',
-                'label' => 'Сортировка',
+                'label' => 'Сортировка.',
             ]
         );
 
