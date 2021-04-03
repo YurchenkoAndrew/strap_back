@@ -20,3 +20,5 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('delivery') }}'><i class='nav-icon la la-truck-loading'></i> Доставка и оплата</a></li>
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('setting') }}'><i class='nav-icon la la-cogs'></i> Конфигурация</a></li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('user') }}'><i class='nav-icon la la-users'></i> Пользователи</a></li>
